@@ -1,0 +1,1 @@
+<%= { urls: @bucket.objects.map { |o| o.url(expires_in: 30) } }.to_json %>
