@@ -13,6 +13,10 @@ get '/' do
 end
 
 get '/:bucket' do
-  @bucket = AWS::S3::Bucket.find(params[:bucket])
+  begin
+    @bucket = AWS::S3::Bucket.find(params[:bucket])
+  rescue AWS::S3::AccessDenied => e
+    puts e.message
+  end
   erb :index
 end
