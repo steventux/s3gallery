@@ -1,6 +1,6 @@
 require 'sinatra'
+require 'sinatra/json'
 require 'aws/s3'
-require 'json'
 
 before do
   AWS::S3::Base.establish_connection!(
@@ -9,14 +9,13 @@ before do
 end
 
 get '/' do
-  "<h1>S3 Gallery</h1>"  
+  "GET /:bucket/:folder"  
 end
 
-get '/:bucket' do
-  begin
-    @bucket = AWS::S3::Bucket.find(params[:bucket])
-  rescue AWS::S3::AccessDenied => e
-    puts e.message
-  end
-  erb :index
+get '/:bucket/:folder' do
+  s3objects = AWS::S3::Bucket.objects(params[:bucket], prefix: params[:folder])
+  
+  json s3objects.map(&:url).select! { |url|
+    url =~ /\w+\.(gif|jpg|jpeg|png)/ # TODO: Handle other media
+  }
 end
