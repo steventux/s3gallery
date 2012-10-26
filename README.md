@@ -8,6 +8,8 @@ Get Started!
 
 $ ruby -rubygems app.rb
 
+Vist http://localhost:4567/index.html for a demo.
+
 You need jquery included in the page calling the gallery, then add the following script tag:
 
 &lt;script src="http://localhost:4567/galleryjs/bucketname/foldername/element_id"&gt;&lt;/script&gt;
