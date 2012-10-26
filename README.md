@@ -6,9 +6,11 @@ Image gallery service you can add to any app!
 Get Started!
 ------------
 
+export vars S3_KEY and S3_SECRET with your S3 credentials.
+
 $ ruby -rubygems app.rb
 
-Vist http://localhost:4567/index.html for a demo.
+Visit http://localhost:4567/index.html for a demo (expects a bucket named 's3gallery' and images in a folder named 'gallery1').
 
 You need jquery included in the page calling the gallery, then add the following script tag:
 
