@@ -1,0 +1,18 @@
+$(document).ready(function() {
+  var $el = $('#<%= params[:element_id] %>'),
+      galleryUrls = <%= @urls %>,
+      len = galleryUrls.length,
+      schemeHostPort = '<%= request.env['rack.url_scheme'] %>://<%= request.env['HTTP_HOST'] %>'; 
+
+  $.each(['/css/colorbox.css', '/css/s3gallery.css'], function(idx, item){
+    $("head").append('<link rel="stylesheet" href="'+ schemeHostPort + item +'"/>');
+  });
+
+  $("head").append('<script src="' + schemeHostPort + '/js/jquery.colorbox.js"></script>');
+
+  for (var idx = 0; idx < len; idx++) {
+    $el.after($('<a href=' + galleryUrls[idx] + ' class="gallery cb'+idx+'">Click to open gallery</a>'));      
+  } 
+  
+  $(".gallery").colorbox({rel:'gallery', transition:"none", width:"650px", height:"490px"});
+});
