@@ -3,6 +3,8 @@ s3gallery
 
 Image gallery service you can add to any app!
 
+[Take a look](http://s3gallery.herokuapp.com/index.html)
+
 Get Started!
 ------------
 
