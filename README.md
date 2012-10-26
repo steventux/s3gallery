@@ -19,5 +19,5 @@ This script targets the dom element specified in the 'element_id' portion of the
 TODO
 ----
 
-Pass gallery height and width via params.
-HTML video...?
+- Pass gallery height and width via params.
+- HTML video...?
