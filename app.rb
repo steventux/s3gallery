@@ -13,7 +13,7 @@ helpers do
     s3objects = AWS::S3::Bucket.objects(params[:bucket], prefix: params[:folder])
   
     s3objects.map(&:url).select! { |url|
-      url =~ /\w+\.(gif|jpg|jpeg|png)/ # TODO: Handle other media
+      url =~ /\w+\.(gif|jpg|jpeg|png|PNG)/ # TODO: Handle other media
     }
   end
 end
