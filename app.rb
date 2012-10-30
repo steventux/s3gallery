@@ -13,13 +13,14 @@ helpers do
     s3objects = AWS::S3::Bucket.objects(params[:bucket], prefix: params[:folder])
   
     s3objects.map(&:url).select! { |url|
-      url =~ /\w+\.(gif|jpg|jpeg|png|PNG)/ # TODO: Handle other media
+      # TODO: Revisit this. 
+      url =~ /\w+\.(gif|jpg|jpeg|png)/ 
     }
   end
 end
 
 get '/' do
-  "GET /:bucket/:folder"  
+  redirect "/index.html"  
 end
 
 get '/:bucket/:folder' do
