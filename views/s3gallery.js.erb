@@ -11,8 +11,8 @@ $(document).ready(function() {
   $("head").append('<script src="' + schemeHostPort + '/js/jquery.colorbox.js"></script>');
 
   for (var idx = 0; idx < len; idx++) {
-    $el.after($('<a href=' + galleryUrls[idx] + ' class="gallery cb'+idx+'">View the gallery</a>'));      
+    $el.after($('<a href=' + galleryUrls[idx] + ' class="gallery">View the gallery</a>'));      
   } 
   
-  $(".gallery").colorbox({rel:'gallery', transition:"none", width:"650px", height:"490px"});
+  $(".gallery").colorbox({rel:'gallery', width:"650px", height:"490px"});
 });
