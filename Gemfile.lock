@@ -33,5 +33,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-s3
+  rack-test
   sinatra
   sinatra-contrib
