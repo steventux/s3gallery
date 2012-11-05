@@ -1,31 +1,30 @@
-var S3Gallery;
 $(document).ready(function() {
-    var $el = $('#<%= params[:element_id] %>'),
-        galleryUrls = <%= @urls %>,
-        len = galleryUrls.length,
-        schemeHostPort = '<%= request.env['rack.url_scheme'] %>://<%= request.env['HTTP_HOST'] %>'; 
+  var $el = $('#<%= params[:element_id] %>'),
+      galleryUrls = <%= @urls %>,
+      len = galleryUrls.length,
+      schemeHostPort = '<%= request.env['rack.url_scheme'] %>://<%= request.env['HTTP_HOST'] %>'; 
 
-    $.each(['/css/colorbox.css', '/css/s3gallery.css'], function(idx, item){
-      $("head").append('<link rel="stylesheet" href="'+ schemeHostPort + item +'"/>');
-    });
+  $.each(['/css/colorbox.css', '/css/s3gallery.css'], function(idx, item){
+    $("head").append('<link rel="stylesheet" href="'+ schemeHostPort + item +'"/>');
+  });
 
-    $("head").append('<script src="' + schemeHostPort + '/js/jquery.colorbox.js"></script>');
+  $("head").append('<script src="' + schemeHostPort + '/js/jquery.colorbox.js"></script>');
 
-    var galleryAnchor = function(index) {
-      var cssClasses = index == 0 ? "gallery gallery-opener" : "gallery"
-      return $('<a href=' + galleryUrls[index] + ' class="' + cssClasses + '">View the gallery</a>');
-    }
+  var galleryAnchor = function(index) {
+    var cssClasses = index == 0 ? "gallery gallery-opener" : "gallery";
+    return $('<a href=' + galleryUrls[index] + ' class="' + cssClasses + '">View the gallery</a>');
+  }
 
-    if ($el.prop("tagName") == "A") {
-      $el.addClass("gallery");
-      $el.attr("href", galleryUrls[0]);
-    } else {
-      $el.append(galleryAnchor(0));
-    }
+  if ($el.prop("tagName") == "A") {
+    $el.addClass("gallery");
+    $el.attr("href", galleryUrls[0]);
+  } else {
+    $el.append(galleryAnchor(0));
+  }
 
-    for (var idx = 1; idx < len; idx++) {
-      $el.after(galleryAnchor(idx));      
-    } 
+  for (var idx = 1; idx < len; idx++) {
+    $el.after(galleryAnchor(idx));      
+  } 
   
-    $(".gallery").colorbox({rel:'gallery', width:"650px", height:"490px"});
+  $(".gallery").colorbox({rel:'gallery', width:"650px", height:"490px"});
 });
