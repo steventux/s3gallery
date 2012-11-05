@@ -1,2 +1,2 @@
-.gallery { display:none; }
+.gallery { display:none; text-decoration:none; }
 .gallery.gallery-opener { display:block; }
