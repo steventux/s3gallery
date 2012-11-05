@@ -17,7 +17,8 @@ $(document).ready(function() {
     }
 
     if ($el.prop("tagName") == "A") {
-      $el.href = galleryUrls[0];
+      $el.addClass("gallery");
+      $el.attr("href", galleryUrls[0]);
     } else {
       $el.append(galleryAnchor(0));
     }
